@@ -1,7 +1,4 @@
 import React from "react";
-// import Checkbox from "../atoms/checkbox";
-// import Button from "../atoms/button";
-// import Input from "../atoms/input";
 
 import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
@@ -38,7 +35,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
     <div className="flex items-center gap-2 py-2 px-3 border-b">
       <Checkbox
         checked={completed}
-        onChange={() => onToggle(id)}
+        onClick={() => onToggle(id)}
         aria-label="Toggle complete"
       />
       {isEditing ? (
