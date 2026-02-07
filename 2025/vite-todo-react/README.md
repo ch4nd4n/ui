@@ -1,26 +1,48 @@
-# Vite Todo React App
+# vite-todo-react
 
-This app uses:
+A Todo application built with React 19 and Vite, using agentic coding practices.
 
-- shadcn-ui for UI components
-- tailwind.css for styling
-- Atomic design pattern for organizing components
-- Kebab-case for all file names
+## Tech Stack
+
+- **Framework**: React 19 + TypeScript
+- **Build Tool**: Vite (rolldown-vite)
+- **Styling**: Tailwind CSS 4
+- **UI Components**: shadcn/ui + Radix UI
+- **Package Manager**: pnpm
+
+## Features
+
+- Add, edit, and delete todos
+- Mark todos as complete/incomplete
+- Filter by status (all/active/completed)
+- Inline editing
+
+## Getting Started
+
+```bash
+pnpm install
+pnpm dev
+```
 
 ## Folder Structure
 
-- src/
-  - components/
-    - atoms/
-    - molecules/
-    - organisms/
-  - pages/
-  - hooks/
-  - utils/
-  - styles/
+```
+src/
+├── components/
+│   ├── molecules/    # Mid-level components (todo-item, todo-filter)
+│   ├── organisms/    # Complex components (todo-list, todo-form)
+│   └── ui/           # Primitive UI components (button, checkbox, input)
+├── lib/              # Utilities
+├── pages/            # Page components
+└── main.tsx          # Entry point
+```
 
-## Notes
+## Conventions
 
-- All files use kebab-case naming.
-- Components follow atomic design: atoms (basic), molecules (combinations), organisms (complex).
-- UI built with shadcn-ui and styled using tailwind.css.
+- All files use kebab-case naming
+- Components follow atomic design: atoms/ui (basic), molecules (combinations), organisms (complex)
+- UI built with shadcn/ui and styled using Tailwind CSS
+
+## Agent Integration
+
+This project was built using **Claude** (Anthropic) as the primary AI coding agent for code generation, UI suggestions, and development assistance.
