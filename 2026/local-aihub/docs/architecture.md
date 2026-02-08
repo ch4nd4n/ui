@@ -66,7 +66,7 @@ Wraps the client for React components:
 
 ```ts
 const { generate, isLoading, error, abort } = useOllama({
-  model: "glm-edge-ocr",
+  model: "glm-ocr",
   stream: true,
 });
 ```
@@ -116,7 +116,7 @@ export const ocrToolDef = {
   icon: ScanText,
   path: "/ocr",
   component: OcrTool,
-  defaultModel: "glm-edge-ocr",
+  defaultModel: "glm-ocr",
 };
 ```
 

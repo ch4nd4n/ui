@@ -239,7 +239,7 @@ export const tools: ToolDefinition[] = [
     icon: ScanText,
     path: "/ocr",
     component: OcrTool,
-    defaultModel: "glm-edge-ocr",
+    defaultModel: "glm-ocr",
   },
 ];
 ```

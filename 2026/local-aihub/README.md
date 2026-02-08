@@ -22,7 +22,7 @@ Pull the models you need:
 
 ```bash
 # For Image OCR
-ollama pull glm-edge-ocr
+ollama pull glm-ocr
 ```
 
 ## Quick Start

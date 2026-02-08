@@ -6,7 +6,7 @@
 
 ## Overview
 
-Users upload an image and get extracted text back. Processing happens locally via Ollama's glm-edge-ocr model. This is the first tool in Local-AiHub and validates the core infrastructure that all future tools will share.
+Users upload an image and get extracted text back. Processing happens locally via Ollama's glm-ocr model. This is the first tool in Local-AiHub and validates the core infrastructure that all future tools will share.
 
 ## User Flow
 
@@ -33,13 +33,13 @@ Users upload an image and get extracted text back. Processing happens locally vi
 
 ## Ollama Integration
 
-- **Model**: `glm-edge-ocr`
+- **Model**: `glm-ocr`
 - **Endpoint**: `POST http://localhost:11434/api/chat`
 - **Streaming**: Yes (default)
 - **Payload**:
   ```json
   {
-    "model": "glm-edge-ocr",
+    "model": "glm-ocr",
     "messages": [
       {
         "role": "user",
@@ -57,7 +57,7 @@ Users upload an image and get extracted text back. Processing happens locally vi
 | Scenario | How detected | User sees |
 |---|---|---|
 | Ollama not running | Connection refused / fetch error | "Cannot connect to Ollama. Make sure it's running on localhost:11434." |
-| Model not pulled | HTTP 404 or error in response | "Model 'glm-edge-ocr' not found. Run `ollama pull glm-edge-ocr` to install it." |
+| Model not pulled | HTTP 404 or error in response | "Model 'glm-ocr' not found. Run `ollama pull glm-ocr` to install it." |
 | Unsupported file type | Client-side check on file.type | "Unsupported file type. Please upload a JPG, PNG, or WebP image." |
 | File too large | Client-side check on file.size | "File is too large (max 10 MB)." |
 | Stream interrupted | Fetch error mid-stream | "Connection lost during processing. Please try again." |
