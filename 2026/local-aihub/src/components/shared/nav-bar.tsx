@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Bot } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { path: "/", label: "Home" },
@@ -18,22 +19,25 @@ export function NavBar() {
           Local-AiHub
         </Link>
 
-        <nav className="flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm transition-colors",
-                location.pathname === link.path
-                  ? "bg-secondary text-secondary-foreground"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-1">
+          <nav className="flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={cn(
+                  "rounded-md px-3 py-1.5 text-sm transition-colors",
+                  location.pathname === link.path
+                    ? "bg-secondary text-secondary-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
