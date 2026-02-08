@@ -14,6 +14,10 @@ pnpm dev
 
 Local-AiHub is a collection of local-first LLM tools. Each tool is a self-contained feature that communicates with Ollama running on localhost. See [docs/prd.md](docs/prd.md) for product requirements and [docs/architecture.md](docs/architecture.md) for technical design.
 
+## Feature documentation
+
+Document feature before coding the feature. Eg. docs/features/theme-toggle.md
+
 ## Code Conventions
 
 - **File naming**: kebab-case (e.g., `file-drop-zone.tsx`, `use-ollama.ts`)
@@ -68,4 +72,3 @@ src/
 ## Commit Style
 
 Conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`
-Co-author AI contributions: `Co-Authored-By: <Agent> <email>`

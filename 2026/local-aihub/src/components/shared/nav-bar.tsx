@@ -6,6 +6,7 @@ import { ThemeToggle } from "./theme-toggle";
 const navLinks = [
   { path: "/", label: "Home" },
   { path: "/ocr", label: "OCR" },
+  { path: "/tools/markdown-to-json", label: "Markdown to JSON" },
 ];
 
 export function NavBar() {
