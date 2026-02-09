@@ -15,7 +15,11 @@ export function useTheme(): UseThemeReturn {
   // Initialize theme from localStorage
   useEffect(() => {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    const initialTheme = (stored === "light" || stored === "dark" || stored === "system" ? stored : "system") as Theme;
+    const initialTheme = (
+      stored === "light" || stored === "dark" || stored === "system"
+        ? stored
+        : "system"
+    ) as Theme;
     setThemeState(initialTheme);
 
     // Apply theme
@@ -40,7 +44,9 @@ export function useTheme(): UseThemeReturn {
   const applyTheme = useCallback((newTheme: Theme) => {
     const html = document.documentElement;
     const isDark =
-      newTheme === "dark" || (newTheme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      newTheme === "dark" ||
+      (newTheme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
 
     if (isDark) {
       html.classList.add("dark");
@@ -51,11 +57,14 @@ export function useTheme(): UseThemeReturn {
     setResolvedTheme(isDark ? "dark" : "light");
   }, []);
 
-  const setTheme = useCallback((newTheme: Theme) => {
-    setThemeState(newTheme);
-    localStorage.setItem(THEME_STORAGE_KEY, newTheme);
-    applyTheme(newTheme);
-  }, [applyTheme]);
+  const setTheme = useCallback(
+    (newTheme: Theme) => {
+      setThemeState(newTheme);
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+      applyTheme(newTheme);
+    },
+    [applyTheme]
+  );
 
   return { theme: mounted ? theme : "system", setTheme, resolvedTheme };
 }

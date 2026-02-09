@@ -55,10 +55,7 @@ export function OcrTool() {
           />
 
           <div className="flex gap-2">
-            <Button
-              onClick={handleExtract}
-              disabled={!base64 || isLoading}
-            >
+            <Button onClick={handleExtract} disabled={!base64 || isLoading}>
               {isLoading ? "Extracting..." : "Extract Text"}
             </Button>
 

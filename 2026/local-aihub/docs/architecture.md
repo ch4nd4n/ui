@@ -4,14 +4,14 @@ Technical decisions and implementation patterns for Local-AiHub.
 
 ## Tech Stack
 
-| Layer | Choice | Notes |
-|---|---|---|
-| Framework | React 19 + TypeScript | Strict mode enabled |
-| Build | Vite (rolldown-vite) | Fast dev server, ES modules |
-| Styling | Tailwind CSS + shadcn/ui | Dark-mode-first, utility classes |
-| Icons | lucide-react | Consistent, tree-shakeable icon set |
-| State | React state / context | Add Zustand only if state grows complex |
-| Package manager | pnpm | Lockfile committed |
+| Layer           | Choice                   | Notes                                   |
+| --------------- | ------------------------ | --------------------------------------- |
+| Framework       | React 19 + TypeScript    | Strict mode enabled                     |
+| Build           | Vite (rolldown-vite)     | Fast dev server, ES modules             |
+| Styling         | Tailwind CSS + shadcn/ui | Dark-mode-first, utility classes        |
+| Icons           | lucide-react             | Consistent, tree-shakeable icon set     |
+| State           | React state / context    | Add Zustand only if state grows complex |
+| Package manager | pnpm                     | Lockfile committed                      |
 
 ## Folder Structure
 
@@ -72,6 +72,7 @@ const { generate, isLoading, error, abort } = useOllama({
 ```
 
 Responsibilities:
+
 - Manage loading/error/result state
 - Handle streaming token accumulation
 - Provide abort function for cancellation
@@ -79,26 +80,26 @@ Responsibilities:
 
 ### Error Scenarios
 
-| Scenario | Detection | User message |
-|---|---|---|
+| Scenario           | Detection                          | User message                                                           |
+| ------------------ | ---------------------------------- | ---------------------------------------------------------------------- |
 | Ollama not running | Connection refused on health check | "Cannot connect to Ollama. Make sure it's running on localhost:11434." |
-| Model not pulled | 404 from generate/chat | "Model 'X' is not available. Run `ollama pull X` to download it." |
-| Request timeout | AbortController timeout | "Request timed out. The model may be loading — try again." |
-| Invalid file | Client-side validation | "Unsupported file type. Please upload a JPG, PNG, or WebP image." |
-| File too large | Client-side size check | "File is too large (max 10 MB)." |
+| Model not pulled   | 404 from generate/chat             | "Model 'X' is not available. Run `ollama pull X` to download it."      |
+| Request timeout    | AbortController timeout            | "Request timed out. The model may be loading — try again."             |
+| Invalid file       | Client-side validation             | "Unsupported file type. Please upload a JPG, PNG, or WebP image."      |
+| File too large     | Client-side size check             | "File is too large (max 10 MB)."                                       |
 
 ## Routing
 
 React Router with path-based routes:
 
-| Path | Component | Tool |
-|---|---|---|
-| `/` | Home | Tool launcher / cards |
-| `/ocr` | OCR | Image OCR |
-| `/describe` | ImageDescribe | Image Description |
-| `/qa` | DocumentQA | Document Q&A |
-| `/rewrite` | TextRewriter | Text Rewriter |
-| `/playground` | PromptPlayground | Prompt Playground |
+| Path          | Component        | Tool                  |
+| ------------- | ---------------- | --------------------- |
+| `/`           | Home             | Tool launcher / cards |
+| `/ocr`        | OCR              | Image OCR             |
+| `/describe`   | ImageDescribe    | Image Description     |
+| `/qa`         | DocumentQA       | Document Q&A          |
+| `/rewrite`    | TextRewriter     | Text Rewriter         |
+| `/playground` | PromptPlayground | Prompt Playground     |
 
 ## Tool Registration
 
@@ -138,10 +139,10 @@ Non-streaming fallback exists for backends that don't support it.
 
 User preferences are stored in `localStorage`:
 
-| Key | Value | Default |
-|---|---|---|
-| `aihub:ollama-url` | Base URL string | `http://localhost:11434` |
-| `aihub:models` | JSON map of tool ID to selected model | Per-tool defaults from registry |
-| `aihub:theme` | `dark` / `light` / `auto` | `dark` |
+| Key                | Value                                 | Default                         |
+| ------------------ | ------------------------------------- | ------------------------------- |
+| `aihub:ollama-url` | Base URL string                       | `http://localhost:11434`        |
+| `aihub:models`     | JSON map of tool ID to selected model | Per-tool defaults from registry |
+| `aihub:theme`      | `dark` / `light` / `auto`             | `dark`                          |
 
 No server-side storage. Everything stays on the user's machine.

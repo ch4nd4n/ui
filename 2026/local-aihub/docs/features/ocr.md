@@ -23,11 +23,11 @@ Users upload an image and get extracted text back. Processing happens locally vi
 
 ## Supported Inputs
 
-| Format | MIME Type |
-|---|---|
-| JPEG | image/jpeg |
-| PNG | image/png |
-| WebP | image/webp |
+| Format | MIME Type  |
+| ------ | ---------- |
+| JPEG   | image/jpeg |
+| PNG    | image/png  |
+| WebP   | image/webp |
 
 **Max file size**: 10 MB
 
@@ -54,14 +54,14 @@ Users upload an image and get extracted text back. Processing happens locally vi
 
 ## Error Scenarios
 
-| Scenario | How detected | User sees |
-|---|---|---|
-| Ollama not running | Connection refused / fetch error | "Cannot connect to Ollama. Make sure it's running on localhost:11434." |
-| Model not pulled | HTTP 404 or error in response | "Model 'glm-ocr' not found. Run `ollama pull glm-ocr` to install it." |
-| Unsupported file type | Client-side check on file.type | "Unsupported file type. Please upload a JPG, PNG, or WebP image." |
-| File too large | Client-side check on file.size | "File is too large (max 10 MB)." |
-| Stream interrupted | Fetch error mid-stream | "Connection lost during processing. Please try again." |
-| Empty response | Stream completes with no content | "No text was extracted from this image. Try a different image or model." |
+| Scenario              | How detected                     | User sees                                                                |
+| --------------------- | -------------------------------- | ------------------------------------------------------------------------ |
+| Ollama not running    | Connection refused / fetch error | "Cannot connect to Ollama. Make sure it's running on localhost:11434."   |
+| Model not pulled      | HTTP 404 or error in response    | "Model 'glm-ocr' not found. Run `ollama pull glm-ocr` to install it."    |
+| Unsupported file type | Client-side check on file.type   | "Unsupported file type. Please upload a JPG, PNG, or WebP image."        |
+| File too large        | Client-side check on file.size   | "File is too large (max 10 MB)."                                         |
+| Stream interrupted    | Fetch error mid-stream           | "Connection lost during processing. Please try again."                   |
+| Empty response        | Stream completes with no content | "No text was extracted from this image. Try a different image or model." |
 
 ## UI Layout
 

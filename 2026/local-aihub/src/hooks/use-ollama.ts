@@ -30,7 +30,7 @@ export function useOllama({ model }: UseOllamaOptions) {
               setResult((prev) => prev + chunk.message.content);
             }
           },
-          controller.signal,
+          controller.signal
         );
       } catch (err: unknown) {
         if (err instanceof DOMException && err.name === "AbortError") {
@@ -47,7 +47,7 @@ export function useOllama({ model }: UseOllamaOptions) {
         setIsLoading(false);
       }
     },
-    [model],
+    [model]
   );
 
   const abort = useCallback(() => {

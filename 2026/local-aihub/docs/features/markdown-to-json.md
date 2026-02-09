@@ -25,24 +25,25 @@ Users can convert markdown content (such as mutual fund factsheets) into structu
 
 Extracts key information from mutual fund factsheets:
 
-| Field | Type | Description |
-|---|---|---|
-| `fundName` | string | Name of the mutual fund |
-| `amcName` | string | Asset Management Company name |
-| `nav` | number | Current Net Asset Value |
-| `expenseRatio` | number | Expense ratio as percentage |
-| `aum` | string | Assets Under Management |
-| `returns1Y` | number | 1-year return percentage |
-| `returns3Y` | number | 3-year return percentage (annualized) |
-| `returns5Y` | number | 5-year return percentage (annualized) |
-| `riskLevel` | string | Risk level (Low/Medium/High) |
-| `category` | string | Fund category (Equity/Debt/Hybrid/etc) |
-| `managerName` | string | Fund manager name |
+| Field           | Type   | Description                             |
+| --------------- | ------ | --------------------------------------- |
+| `fundName`      | string | Name of the mutual fund                 |
+| `amcName`       | string | Asset Management Company name           |
+| `nav`           | number | Current Net Asset Value                 |
+| `expenseRatio`  | number | Expense ratio as percentage             |
+| `aum`           | string | Assets Under Management                 |
+| `returns1Y`     | number | 1-year return percentage                |
+| `returns3Y`     | number | 3-year return percentage (annualized)   |
+| `returns5Y`     | number | 5-year return percentage (annualized)   |
+| `riskLevel`     | string | Risk level (Low/Medium/High)            |
+| `category`      | string | Fund category (Equity/Debt/Hybrid/etc)  |
+| `managerName`   | string | Fund manager name                       |
 | `inceptionDate` | string | Fund inception date (YYYY-MM-DD format) |
 
 ## UI Components
 
 ### Left Panel
+
 - **Template Selector**: Dropdown to select template (Mutual Fund Factsheet, etc.)
 - **Markdown Input**: Large textarea for pasting markdown content
 - **Action Buttons**:
@@ -51,6 +52,7 @@ Extracts key information from mutual fund factsheets:
   - "Clear": Reset inputs and outputs
 
 ### Right Panel
+
 - **JSON Output**: Read-only display of extracted JSON
 - **Copy Button**: Copy JSON to clipboard
 - **Error Display**: Shows errors from Ollama or processing
@@ -76,11 +78,11 @@ src/
 
 ```typescript
 interface JsonTemplate {
-  id: string;                    // Unique identifier
-  name: string;                  // Display name
-  description: string;           // User-facing description
-  schema: Record<string, string>;// Field definitions
-  systemPrompt: string;          // Instructions for Ollama
+  id: string; // Unique identifier
+  name: string; // Display name
+  description: string; // User-facing description
+  schema: Record<string, string>; // Field definitions
+  systemPrompt: string; // Instructions for Ollama
 }
 ```
 
@@ -102,21 +104,23 @@ interface JsonTemplate {
 
 ## Error Handling
 
-| Scenario | Handling |
-|---|---|
-| No template selected | Validation error: "Please select a valid template" |
-| Empty markdown input | Validation error: "Please paste markdown content" |
-| Ollama connection failed | Displays error: "Cannot connect to Ollama..." |
-| Invalid markdown | Ollama may return null/incomplete values |
-| Generation timeout | Shows timeout error message |
+| Scenario                 | Handling                                           |
+| ------------------------ | -------------------------------------------------- |
+| No template selected     | Validation error: "Please select a valid template" |
+| Empty markdown input     | Validation error: "Please paste markdown content"  |
+| Ollama connection failed | Displays error: "Cannot connect to Ollama..."      |
+| Invalid markdown         | Ollama may return null/incomplete values           |
+| Generation timeout       | Shows timeout error message                        |
 
 ## UI Integration
 
 ### Navigation
+
 - Added "Markdown to JSON" link in NavBar under tools section
 - Route: `/tools/markdown-to-json`
 
 ### Styling
+
 - Follows existing design system (Card, Button, colors)
 - Responsive grid layout (1 column mobile, 2 columns desktop)
 - Consistent spacing and typography
@@ -166,11 +170,13 @@ interface JsonTemplate {
 ## File Changes Summary
 
 ### New Files
+
 - `src/lib/templates/json-templates.ts` - Template definitions
 - `src/components/tools/markdown-to-json/markdown-to-json-tool.tsx` - Main tool component
 - `src/pages/markdown-to-json.tsx` - Page wrapper component
 - `docs/features/markdown-to-json.md` - This documentation
 
 ### Modified Files
+
 - `src/App.tsx` - Added route and import
 - `src/components/shared/nav-bar.tsx` - Added navigation link

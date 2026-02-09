@@ -24,11 +24,13 @@ pnpm add react-router-dom
 ```
 
 **Tailwind v4 setup**:
+
 - Add the Tailwind plugin to `vite.config.ts`
 - Replace `src/index.css` with `@import "tailwindcss"`
 - Remove `src/App.css` (no longer needed)
 
 **shadcn/ui setup**:
+
 - Run `pnpm dlx shadcn@latest init` to generate `components.json` and `src/components/ui/` folder
 - Add components as needed: `pnpm dlx shadcn@latest add button card`
 
@@ -42,11 +44,11 @@ Set up the folder structure and base files.
 
 ### Files to create
 
-| File | Purpose |
-|---|---|
-| `src/types/index.ts` | Shared interfaces (ToolDefinition, OllamaRequest, OllamaResponse) |
-| `src/lib/constants.ts` | Default Ollama URL, max file size, accepted MIME types |
-| `src/lib/cn.ts` | Tailwind merge utility (clsx + twMerge) |
+| File                   | Purpose                                                           |
+| ---------------------- | ----------------------------------------------------------------- |
+| `src/types/index.ts`   | Shared interfaces (ToolDefinition, OllamaRequest, OllamaResponse) |
+| `src/lib/constants.ts` | Default Ollama URL, max file size, accepted MIME types            |
+| `src/lib/cn.ts`        | Tailwind merge utility (clsx + twMerge)                           |
 
 ### `src/types/index.ts`
 
@@ -96,11 +98,12 @@ export const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 ### Files to create
 
-| File | Purpose |
-|---|---|
+| File                       | Purpose                                |
+| -------------------------- | -------------------------------------- |
 | `src/lib/ollama-client.ts` | Low-level fetch wrapper for Ollama API |
 
 Responsibilities:
+
 - `chatStream(request, onChunk, signal)` — POST to `/api/chat` with `stream: true`, parse NDJSON, call `onChunk` per token
 - `chat(request)` — non-streaming variant (for simpler use cases later)
 - `listModels()` — GET `/api/tags` (for health check / model validation)
@@ -115,10 +118,10 @@ Responsibilities:
 
 ### Files to create
 
-| File | Purpose |
-|---|---|
+| File                      | Purpose                                                 |
+| ------------------------- | ------------------------------------------------------- |
 | `src/hooks/use-ollama.ts` | React hook wrapping ollama-client with state management |
-| `src/lib/file-utils.ts` | `fileToBase64()`, `validateFile()` helpers |
+| `src/lib/file-utils.ts`   | `fileToBase64()`, `validateFile()` helpers              |
 
 ### `use-ollama` hook interface
 
@@ -152,23 +155,23 @@ function useOllama(options: { model: string }) {
 
 ### Files to create/add via shadcn CLI
 
-| File | Purpose |
-|---|---|
-| `src/components/ui/button.tsx` | shadcn Button |
-| `src/components/ui/card.tsx` | shadcn Card |
+| File                                       | Purpose                                                  |
+| ------------------------------------------ | -------------------------------------------------------- |
+| `src/components/ui/button.tsx`             | shadcn Button                                            |
+| `src/components/ui/card.tsx`               | shadcn Card                                              |
 | `src/components/shared/file-drop-zone.tsx` | Drag-and-drop + click-to-browse file upload with preview |
-| `src/components/shared/result-viewer.tsx` | Scrollable text panel with copy button |
-| `src/components/shared/copy-button.tsx` | Copy-to-clipboard with checkmark feedback |
-| `src/components/shared/nav-bar.tsx` | Top navigation bar |
+| `src/components/shared/result-viewer.tsx`  | Scrollable text panel with copy button                   |
+| `src/components/shared/copy-button.tsx`    | Copy-to-clipboard with checkmark feedback                |
+| `src/components/shared/nav-bar.tsx`        | Top navigation bar                                       |
 
 ### `file-drop-zone.tsx` props
 
 ```ts
 interface FileDropZoneProps {
   onFile: (file: File) => void;
-  accept: string[];       // MIME types
-  maxSize: number;        // bytes
-  preview?: string;       // data URL for image preview
+  accept: string[]; // MIME types
+  maxSize: number; // bytes
+  preview?: string; // data URL for image preview
   error?: string | null;
 }
 ```
@@ -195,8 +198,8 @@ Renders text in a scrollable container. Auto-scrolls during streaming. Includes 
 
 ### Files to create
 
-| File | Purpose |
-|---|---|
+| File                                    | Purpose                 |
+| --------------------------------------- | ----------------------- |
 | `src/components/tools/ocr/ocr-tool.tsx` | Main OCR page component |
 
 This is the feature component that composes everything:
@@ -219,11 +222,11 @@ Layout: two-column on `md:` breakpoint, stacked on mobile.
 
 ### Files to create
 
-| File | Purpose |
-|---|---|
-| `src/lib/tools.ts` | Array of ToolDefinition objects |
-| `src/pages/home.tsx` | Home page with tool cards |
-| `src/pages/ocr.tsx` | Route wrapper for OCR tool |
+| File                 | Purpose                         |
+| -------------------- | ------------------------------- |
+| `src/lib/tools.ts`   | Array of ToolDefinition objects |
+| `src/pages/home.tsx` | Home page with tool cards       |
+| `src/pages/ocr.tsx`  | Route wrapper for OCR tool      |
 
 ### `src/lib/tools.ts`
 
@@ -256,11 +259,11 @@ Renders a grid of cards from the tools array. Each card links to the tool's path
 
 ### Files to modify
 
-| File | Change |
-|---|---|
-| `src/App.tsx` | Replace boilerplate with BrowserRouter, Routes, nav bar |
-| `src/main.tsx` | No changes needed |
-| `index.html` | Update `<title>` to "Local-AiHub" |
+| File           | Change                                                  |
+| -------------- | ------------------------------------------------------- |
+| `src/App.tsx`  | Replace boilerplate with BrowserRouter, Routes, nav bar |
+| `src/main.tsx` | No changes needed                                       |
+| `index.html`   | Update `<title>` to "Local-AiHub"                       |
 
 ### `src/App.tsx` structure
 
@@ -319,24 +322,24 @@ After implementation, verify end-to-end:
 
 ## Files Summary
 
-| File | Action |
-|---|---|
-| `src/types/index.ts` | Create |
-| `src/lib/constants.ts` | Create |
-| `src/lib/cn.ts` | Create |
-| `src/lib/ollama-client.ts` | Create |
-| `src/lib/file-utils.ts` | Create |
-| `src/lib/tools.ts` | Create |
-| `src/hooks/use-ollama.ts` | Create |
-| `src/components/shared/file-drop-zone.tsx` | Create |
-| `src/components/shared/result-viewer.tsx` | Create |
-| `src/components/shared/copy-button.tsx` | Create |
-| `src/components/shared/nav-bar.tsx` | Create |
-| `src/components/tools/ocr/ocr-tool.tsx` | Create |
-| `src/pages/home.tsx` | Create |
-| `src/pages/ocr.tsx` | Create |
-| `src/App.tsx` | Replace |
-| `src/index.css` | Replace |
-| `src/App.css` | Delete |
-| `index.html` | Modify (title) |
-| `vite.config.ts` | Modify (Tailwind plugin) |
+| File                                       | Action                   |
+| ------------------------------------------ | ------------------------ |
+| `src/types/index.ts`                       | Create                   |
+| `src/lib/constants.ts`                     | Create                   |
+| `src/lib/cn.ts`                            | Create                   |
+| `src/lib/ollama-client.ts`                 | Create                   |
+| `src/lib/file-utils.ts`                    | Create                   |
+| `src/lib/tools.ts`                         | Create                   |
+| `src/hooks/use-ollama.ts`                  | Create                   |
+| `src/components/shared/file-drop-zone.tsx` | Create                   |
+| `src/components/shared/result-viewer.tsx`  | Create                   |
+| `src/components/shared/copy-button.tsx`    | Create                   |
+| `src/components/shared/nav-bar.tsx`        | Create                   |
+| `src/components/tools/ocr/ocr-tool.tsx`    | Create                   |
+| `src/pages/home.tsx`                       | Create                   |
+| `src/pages/ocr.tsx`                        | Create                   |
+| `src/App.tsx`                              | Replace                  |
+| `src/index.css`                            | Replace                  |
+| `src/App.css`                              | Delete                   |
+| `index.html`                               | Modify (title)           |
+| `vite.config.ts`                           | Modify (Tailwind plugin) |

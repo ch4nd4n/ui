@@ -20,11 +20,11 @@ Users can toggle between light mode, dark mode, or follow their system preferenc
 
 ## Theme Modes
 
-| Mode | Behavior |
-|---|---|
-| **System** | Respects `prefers-color-scheme` from OS/browser |
-| **Light** | Forces light theme regardless of system preference |
-| **Dark** | Forces dark theme regardless of system preference |
+| Mode       | Behavior                                           |
+| ---------- | -------------------------------------------------- |
+| **System** | Respects `prefers-color-scheme` from OS/browser    |
+| **Light**  | Forces light theme regardless of system preference |
+| **Dark**   | Forces dark theme regardless of system preference  |
 
 **Default**: System preference (falls back to dark if unavailable)
 
@@ -37,6 +37,7 @@ Users can toggle between light mode, dark mode, or follow their system preferenc
 ## UI Integration
 
 ### NavBar Button
+
 - **Location**: Right side of NavBar, after navigation links
 - **Style**: Ghost button with icon variant (`variant="ghost" size="icon"`)
 - **Icons** (from lucide-react):
@@ -46,10 +47,12 @@ Users can toggle between light mode, dark mode, or follow their system preferenc
 - **Interaction**: Click to cycle through modes
 
 ### Visual Feedback
+
 - Icon changes to reflect current mode
 - Smooth transition between themes (handled by CSS)
 
 ### Keyboard Shortcut
+
 - **Shortcut**: `Ctrl+Shift+T` (Windows/Linux) / `Cmd+Shift+T` (Mac)
 - **Behavior**: Cycles through theme modes (same as clicking button)
 - **Implementation**: Global keydown listener in ThemeToggle component
@@ -58,16 +61,21 @@ Users can toggle between light mode, dark mode, or follow their system preferenc
 ## Implementation Details
 
 ### CSS Theme System (Already Exists)
+
 The app already has complete theme support in `src/index.css`:
+
 - `:root` defines light mode colors (oklch color space)
 - `.dark` class defines dark mode colors
 - Custom variant: `@custom-variant dark (&:is(.dark *))`
 
 ### Theme Application
+
 Theme is applied by adding/removing `.dark` class on the `<html>` element.
 
 ### No Flash Prevention
+
 Inline script in `index.html` runs before React loads to:
+
 1. Read theme from localStorage
 2. Detect system preference if theme is "system"
 3. Apply `.dark` class immediately if needed
@@ -75,11 +83,11 @@ Inline script in `index.html` runs before React loads to:
 
 ## Error Scenarios
 
-| Scenario | Handling |
-|---|---|
-| localStorage unavailable | Fall back to dark mode, no persistence |
-| Invalid value in localStorage | Reset to "system" default |
-| System preference detection fails | Default to dark mode |
+| Scenario                          | Handling                               |
+| --------------------------------- | -------------------------------------- |
+| localStorage unavailable          | Fall back to dark mode, no persistence |
+| Invalid value in localStorage     | Reset to "system" default              |
+| System preference detection fails | Default to dark mode                   |
 
 ## Acceptance Criteria
 
@@ -97,11 +105,13 @@ Inline script in `index.html` runs before React loads to:
 ## File Changes Summary
 
 ### New Files
+
 - `docs/features/theme-toggle.md` - Feature documentation
 - `src/hooks/use-theme.ts` - Theme state management hook
 - `src/components/shared/theme-toggle.tsx` - Toggle button component
 
 ### Modified Files
+
 - `src/lib/constants.ts` - Add theme constants and type
 - `src/components/shared/nav-bar.tsx` - Add toggle to UI
 - `index.html` - Remove hard-coded dark class, add flash prevention script

@@ -8,7 +8,8 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   const cycleTheme = () => {
-    const nextTheme: Theme = theme === "system" ? "light" : theme === "light" ? "dark" : "system";
+    const nextTheme: Theme =
+      theme === "system" ? "light" : theme === "light" ? "dark" : "system";
     setTheme(nextTheme);
   };
 

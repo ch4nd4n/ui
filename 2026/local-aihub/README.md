@@ -5,10 +5,10 @@ A collection of simple, focused, offline-capable tools that let you interact wit
 ## Features
 
 - **Image OCR** — Upload an image and extract text, tables, and figures
-- **Image Description** — Get detailed natural language descriptions of images *(planned)*
-- **Document Q&A** — Ask questions about uploaded PDFs and text files *(planned)*
-- **Text Rewriter** — Rephrase, summarize, expand, or shift tone *(planned)*
-- **Prompt Playground** — Test prompts and compare model outputs *(planned)*
+- **Image Description** — Get detailed natural language descriptions of images _(planned)_
+- **Document Q&A** — Ask questions about uploaded PDFs and text files _(planned)_
+- **Text Rewriter** — Rephrase, summarize, expand, or shift tone _(planned)_
+- **Prompt Playground** — Test prompts and compare model outputs _(planned)_
 
 All processing happens locally on your machine. No data is sent to the cloud.
 

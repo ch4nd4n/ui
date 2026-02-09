@@ -15,12 +15,12 @@ pnpm dev
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Production build (type-check + bundle) |
-| `pnpm lint` | Run ESLint |
-| `pnpm preview` | Preview production build locally |
+| Command        | Description                            |
+| -------------- | -------------------------------------- |
+| `pnpm dev`     | Start development server               |
+| `pnpm build`   | Production build (type-check + bundle) |
+| `pnpm lint`    | Run ESLint                             |
+| `pnpm preview` | Preview production build locally       |
 
 ## Branch Strategy
 

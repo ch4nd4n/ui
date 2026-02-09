@@ -39,12 +39,14 @@
 The first tool validates the core infrastructure and delivers immediate value.
 
 **Image OCR**
+
 - Upload an image (jpg, png, webp) and extract text from it
 - Supports tables, figures, handwriting, and mixed-content documents
 - Displays extracted text as raw text or formatted markdown
 - Copy result to clipboard with one click
 
 **Success Criteria**
+
 - User can run the app and immediately use the OCR tool
 - OCR tool accepts an image, processes it, and displays the result
 - Clear visual feedback during processing (progress/loading state)
@@ -53,12 +55,12 @@ The first tool validates the core infrastructure and delivers immediate value.
 
 ### 3.2 Phase 2
 
-| Tool | What the user can do |
-|---|---|
+| Tool                  | What the user can do                                                                            |
+| --------------------- | ----------------------------------------------------------------------------------------------- |
 | **Image Description** | Upload an image and get a detailed natural language description (scene understanding, captions) |
-| **Document Q&A** | Upload a PDF, TXT, or MD file and ask questions about its content in a conversational interface |
-| **Text Rewriter** | Paste text and rephrase, summarize, expand, or shift tone |
-| **Prompt Playground** | Test prompts with different system instructions, compare outputs across models |
+| **Document Q&A**      | Upload a PDF, TXT, or MD file and ask questions about its content in a conversational interface |
+| **Text Rewriter**     | Paste text and rephrase, summarize, expand, or shift tone                                       |
+| **Prompt Playground** | Test prompts with different system instructions, compare outputs across models                  |
 
 ### 3.3 Common Capabilities (across all tools)
 
@@ -72,28 +74,32 @@ The first tool validates the core infrastructure and delivers immediate value.
 ## 4. Non-Functional Requirements
 
 ### Performance
+
 - App loads in under 3 seconds
 - UI remains responsive during long model generations
 
 ### Privacy and Security
+
 - No data leaves the user's machine by default
 - No telemetry or analytics
 - User can optionally configure a remote endpoint
 
 ### Accessibility
+
 - Semantic HTML structure
 - Keyboard navigation support
 - Sufficient color contrast (WCAG AA)
 
 ### Browser Support
+
 - Latest Chrome, Firefox, Edge, Safari (desktop)
 
 ## 5. Phasing
 
-| Phase | Scope | Goal |
-|---|---|---|
-| **1 – MVP** | Image OCR | Validate core infrastructure (file upload, LLM call, result display). Ship one useful tool. |
-| **2 – Expand** | Image Description, Document Q&A, Text Rewriter, Prompt Playground | Grow the toolset. Refine shared components based on Phase 1 learnings. |
-| **3 – Polish** | Home screen, model selector, themes, keyboard shortcuts, compare mode | Improve discoverability and power-user workflows. |
+| Phase          | Scope                                                                 | Goal                                                                                        |
+| -------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **1 – MVP**    | Image OCR                                                             | Validate core infrastructure (file upload, LLM call, result display). Ship one useful tool. |
+| **2 – Expand** | Image Description, Document Q&A, Text Rewriter, Prompt Playground     | Grow the toolset. Refine shared components based on Phase 1 learnings.                      |
+| **3 – Polish** | Home screen, model selector, themes, keyboard shortcuts, compare mode | Improve discoverability and power-user workflows.                                           |
 
 Phase 2+ ideas and feature requests are tracked as GitHub Issues.

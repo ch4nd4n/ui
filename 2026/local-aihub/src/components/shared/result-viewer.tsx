@@ -34,7 +34,7 @@ export function ResultViewer({
         ref={scrollRef}
         className={cn(
           "flex-1 overflow-y-auto p-4 text-sm whitespace-pre-wrap",
-          !content && "flex items-center justify-center",
+          !content && "flex items-center justify-center"
         )}
       >
         {content ? (

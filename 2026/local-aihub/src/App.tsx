@@ -13,7 +13,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ocr" element={<OcrPage />} />
-            <Route path="/tools/markdown-to-json" element={<MarkdownToJsonPage />} />
+            <Route
+              path="/tools/markdown-to-json"
+              element={<MarkdownToJsonPage />}
+            />
           </Routes>
         </main>
       </div>

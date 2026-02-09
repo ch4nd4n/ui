@@ -30,7 +30,7 @@ export function NavBar() {
                   "rounded-md px-3 py-1.5 text-sm transition-colors",
                   location.pathname === link.path
                     ? "bg-secondary text-secondary-foreground"
-                    : "text-muted-foreground hover:text-foreground",
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.label}

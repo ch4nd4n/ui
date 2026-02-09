@@ -1,8 +1,5 @@
 import { OLLAMA_BASE_URL } from "./constants";
-import type {
-  OllamaChatRequest,
-  OllamaChatResponseChunk,
-} from "@/types/index";
+import type { OllamaChatRequest, OllamaChatResponseChunk } from "@/types/index";
 
 function getBaseUrl(): string {
   if (typeof window !== "undefined") {
@@ -14,7 +11,7 @@ function getBaseUrl(): string {
 export async function chatStream(
   request: OllamaChatRequest,
   onChunk: (chunk: OllamaChatResponseChunk) => void,
-  signal?: AbortSignal,
+  signal?: AbortSignal
 ): Promise<void> {
   const baseUrl = getBaseUrl();
   const response = await fetch(`${baseUrl}/api/chat`, {
@@ -28,7 +25,7 @@ export async function chatStream(
     const text = await response.text().catch(() => "");
     if (response.status === 404 || text.includes("not found")) {
       throw new Error(
-        `Model '${request.model}' not found. Run \`ollama pull ${request.model}\` to install it.`,
+        `Model '${request.model}' not found. Run \`ollama pull ${request.model}\` to install it.`
       );
     }
     throw new Error(`Ollama returned ${response.status}: ${text}`);
@@ -63,7 +60,7 @@ export async function chatStream(
 }
 
 export async function listModels(
-  signal?: AbortSignal,
+  signal?: AbortSignal
 ): Promise<{ name: string }[]> {
   const baseUrl = getBaseUrl();
   const response = await fetch(`${baseUrl}/api/tags`, { signal });

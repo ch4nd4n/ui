@@ -1,19 +1,27 @@
 import { useCallback, useState } from "react";
 import { FileJson } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { CopyButton } from "@/components/shared/copy-button";
 import { useOllama } from "@/hooks/use-ollama";
 import { jsonTemplates, getTemplate } from "@/lib/templates/json-templates";
 
 export function MarkdownToJsonTool() {
-  const [selectedTemplateId, setSelectedTemplateId] = useState(jsonTemplates[0]?.id || "");
+  const [selectedTemplateId, setSelectedTemplateId] = useState(
+    jsonTemplates[0]?.id || ""
+  );
   const [markdownInput, setMarkdownInput] = useState("");
   const [jsonOutput, setJsonOutput] = useState("");
   const [validationError, setValidationError] = useState<string | null>(null);
 
   const { result, isLoading, error, generate, abort, reset } = useOllama({
-    model: "llama3.2",
+    model: "gemma3:1b",
   });
 
   const handleGenerate = useCallback(async () => {
@@ -65,7 +73,9 @@ export function MarkdownToJsonTool() {
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Template</CardTitle>
-              <CardDescription>Select a JSON template for extraction</CardDescription>
+              <CardDescription>
+                Select a JSON template for extraction
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <select
@@ -91,7 +101,9 @@ export function MarkdownToJsonTool() {
           <Card className="flex flex-col">
             <CardHeader>
               <CardTitle className="text-lg">Markdown Content</CardTitle>
-              <CardDescription>Paste your markdown content to extract</CardDescription>
+              <CardDescription>
+                Paste your markdown content to extract
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4 flex-1">
               <textarea

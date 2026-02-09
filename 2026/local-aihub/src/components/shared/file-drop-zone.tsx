@@ -31,7 +31,7 @@ export function FileDropZone({
       }
       return null;
     },
-    [accept, maxSize],
+    [accept, maxSize]
   );
 
   const handleFile = useCallback(
@@ -44,7 +44,7 @@ export function FileDropZone({
       setLocalError(null);
       onFile(file);
     },
-    [validate, onFile],
+    [validate, onFile]
   );
 
   const handleDrop = useCallback(
@@ -54,7 +54,7 @@ export function FileDropZone({
       const file = e.dataTransfer.files[0];
       if (file) handleFile(file);
     },
-    [handleFile],
+    [handleFile]
   );
 
   const handleDragOver = useCallback((e: DragEvent) => {
@@ -77,7 +77,7 @@ export function FileDropZone({
           isDragging
             ? "border-primary bg-primary/5"
             : "border-border hover:border-primary/50",
-          displayError && "border-destructive",
+          displayError && "border-destructive"
         )}
         onDrop={handleDrop}
         onDragOver={handleDragOver}

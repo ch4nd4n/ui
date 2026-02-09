@@ -51,7 +51,7 @@ src/
      id: "my-tool",
      name: "My Tool",
      description: "What this tool does",
-     icon: SomeIcon,        // from lucide-react
+     icon: SomeIcon, // from lucide-react
      path: "/my-tool",
      component: MyToolComponent,
      defaultModel: "model-name",
